@@ -1,21 +1,46 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import {GoalButton} from './components';
+import { GoalButton } from './components';
+import * as actions from './actions';
+
+const Goals = {
+  LoseWeight: 'lose_weight',
+  GetFitter: 'get_fitter',
+  GainMuscle: 'gain_muscle',
+}
 
 export default class HomeScreen extends React.Component {
+  handleClick(goal) {
+    const { navigation } = this.props;
+    return () => {
+      actions.navigateToAge(navigation, goal);
+    };
+  }
   render() {
     return (
-      <View style={styles.container}>    
+      <View style={styles.container}>
         <View>
           <Image
-            style={{width: 44, height: 22}}
+            style={{ width: 44, height: 22 }}
           />
           <Text>Welcome to 8fit</Text>
         </View>
         <Text>What's your goal</Text>
-        <GoalButton title={'Lose weight'} subTitle={'Burn fat & get lean'}/>
-        <GoalButton title={'Get fitter'} subTitle={'Tone up & feel healthy'}/>
-        <GoalButton title={'Gain muscle'} subTitle={'Build mass & strength'}/>
+        <GoalButton
+          title={'Lose weight'}
+          subTitle={'Burn fat & get lean'}
+          onClick={this.handleClick(Goals.LoseWeight)}
+        />
+        <GoalButton
+          title={'Get fitter'}
+          subTitle={'Tone up & feel healthy'}
+          onClick={this.handleClick(Goals.GetFitter)}
+        />
+        <GoalButton
+          title={'Gain muscle'}
+          subTitle={'Build mass & strength'}
+          onClick={this.handleClick(Goals.GainMuscle)}
+        />
       </View>
     );
   }

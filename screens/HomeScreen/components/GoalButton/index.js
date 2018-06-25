@@ -3,7 +3,7 @@ import { StyleSheet, TouchableHighlight, Text, View } from 'react-native';
 
 export default ({ onClick, title, subTitle }) => {
   return (
-    <TouchableHighlight onPress={this._onPressButton}>
+    <TouchableHighlight onPress={onClick}>
       <View
         accessibilityLabel="Learn more about this purple button"
         style={styles.container}
