@@ -14,8 +14,7 @@ export default ({ percentage = 0 }) => {
 
 const styles = StyleSheet.create({
   progressBar: {
-    height: 2,
     borderColor: '#32e09e',
-    borderWidth: 1,
+    borderWidth: 2,
   },
 });  
