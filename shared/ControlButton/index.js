@@ -1,24 +1,41 @@
 import React from 'react';
-import {StyleSheet, Button} from 'react-native';
+import { StyleSheet, Button, View, TouchableHighlight, Text } from 'react-native';
 
-const ControlButton = ({title, onClick}) => {
+const ControlButton = ({ title, onClick, disabled }) => {
   return (
-    <Button
-      onPress={onClick}
-      style={styles.controlButton} 
-      title={title}
+    <TouchableHighlight
+      onPress={!disabled ? onClick : () => { }}
+      style={styles.button}
     >
-    </Button>
+      <View style={[styles.container, disabled ? styles.disabled : null]}>
+        <Text style={styles.label}>{title}</Text>
+      </View>
+    </TouchableHighlight>
   );
 }
+
+ControlButton.defaultProps = {
+  title: 'Continue',
+  onClick: () => { },
+};
 
 export default ControlButton;
 
 const styles = StyleSheet.create({
-  controlButton: {
-    borderRadius: 5,
-    position: 'absolute',
-    bottom: 20,
+  container: {
+    borderRadius: 100,
+    borderWidth: 2,
+    paddingVertical: 20,
+    paddingHorizontal: 40,
     backgroundColor: '#292c2f',
+    alignSelf: 'center',
+  },
+  disabled: {
+    backgroundColor: '#a9abac',
+    borderColor: '#a9abac',
+  },
+  label: {
+    color: '#fff',
+    fontSize: 14,
   }
 });  
