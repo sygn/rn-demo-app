@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import { ProgressBar, Header, ControlButton } from '../../shared';
 import * as helpers from '../../helpers/conversion';
 import {HeightMetrics} from '../../shared/constants';
@@ -7,7 +7,7 @@ import {HeightMetrics} from '../../shared/constants';
 export default class SummaryScreen extends React.Component {
   getHeight(cm, metric) {
     if (metric === HeightMetrics.Centimeter) {
-      return `${cm}Cm`;
+      return `${cm} cm`;
     }
 
     const feet = helpers.toFeet(cm);
@@ -32,6 +32,8 @@ export default class SummaryScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Image style={{position: 'absolute', top: 0, right: 0}} source={require('./img/imgParsley.png')} />
+        <Image style={{position: 'absolute', top:0, left:0}} resizeMode={'cover'}source={require('./img/backgroundGrain.png')} />
         <Header title={"Confirm your details: "} />
         <View style={styles.groupContainer}>
           <View style={styles.group}>
@@ -65,18 +67,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   groupContainer: {
+    backgroundColor: '#fff',
+    shadowColor: "#000000",
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 5,
+      width: 5
+    },
     flexDirection: 'column',
     marginHorizontal: 20,
     marginTop: 40,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#dddddd',
     paddingVertical: 10,
   },
   seperator: {
     borderWidth: 1,
-    borderColor: '#000',
-    marginLeft: 20,
+    borderColor: '#fdfdfd',
     paddingLeft: 20,
   },
   group: {
