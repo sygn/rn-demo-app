@@ -5,7 +5,10 @@ import * as screens from './screens';
 
 const RootStack = createStackNavigator({
   Home: {
-    screen: screens.HomeScreen
+    screen: screens.HomeScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
   Age: {
     screen: screens.AgeScreen,
@@ -17,7 +20,14 @@ const RootStack = createStackNavigator({
     screen: screens.SummaryScreen,
   },
   initialScreen: 'HomeScreen',
-});
+}, {
+    // navigationOptions: {
+    //   headerStyle: {
+    //     elevation: 0,
+    //     shadowOpacity: 0,
+    //   },
+    // }
+  });
 
 export default class App extends React.Component {
   render() {
