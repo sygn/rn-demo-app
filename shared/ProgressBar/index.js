@@ -1,21 +1,21 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-export default ({percentage}) => {
+export default ({ percentage = 0 }) => {
   return (
     <View
-      style={{
-        width: '33%',
-        borderWidth: 1,
-      }}
+      style={[styles.progressBar, {
+        width: `${percentage}%`,
+      }]}
     >
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    progressBar: {
-        height: 2,
-        backgroundColor: 'green',
-    },
-  });  
+  progressBar: {
+    height: 2,
+    borderColor: '#32e09e',
+    borderWidth: 1,
+  },
+});  
