@@ -141,14 +141,14 @@ export default class HeightScreen extends React.Component {
             onPress={() => this.setState({ metric: HeightMetrics.Feet })}
           >
             <View style={[styles.toggleButton, styles.feetButton, metric === HeightMetrics.Feet ? styles.activeBtn : null]}>
-              <Text style={[metric === HeightMetrics.Feet ? styles.activeText : null]}>FT</Text>
+              <Text style={[styles.toggleText, metric === HeightMetrics.Feet ? styles.activeText : null]}>FT</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ metric: HeightMetrics.Centimeter })}
           >
             <View style={[styles.toggleButton, styles.cmButton, metric === HeightMetrics.Centimeter ? styles.activeBtn : null]}>
-              <Text style={[metric === HeightMetrics.Centimeter ? styles.activeText : null]}>CM</Text>
+              <Text style={[styles.toggleText,  metric === HeightMetrics.Centimeter ? styles.activeText : null]}>CM</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -202,9 +202,11 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 32,
     paddingHorizontal: 5,
+    fontFamily: 'firasans-bold'
   },
   label: {
     color: '#a9abac',
+    fontFamily: 'firasans-medium'
   },
   feetButton: {
     borderTopLeftRadius: 20,
@@ -213,6 +215,9 @@ const styles = StyleSheet.create({
   cmButton: {
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
+  },
+  toggleText :{
+    fontFamily: 'firasans-medium'
   }
 });
 
