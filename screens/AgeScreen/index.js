@@ -33,7 +33,7 @@ export default class AgeScreen extends React.Component {
   }
 
   isValid(age) {
-    return !!age;
+    return !Number.isNaN(parseInt(age, 10));
   }
 
   render() {
@@ -56,7 +56,7 @@ export default class AgeScreen extends React.Component {
         <ControlButton
           title={'Continue'}
           onClick={this.onContinue}
-          disabled={!age}
+          disabled={!this.isValid(age)}
         />
       </View>
     );
@@ -71,10 +71,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   textInput: {
-    padding: 20,
+    padding: 10,
     alignSelf: 'stretch',
     width: '100%',
-    fontSize: 20,
+    fontSize: 32,
+    fontFamily: 'firasans-bold',
   },
   textInputContainer: {
     marginTop: 40,
