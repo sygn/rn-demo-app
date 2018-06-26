@@ -1,46 +1,62 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import {ProgressBar, Header, ControlButton} from '../../shared';
+import { ProgressBar, Header, ControlButton } from '../../shared';
 import * as actions from './actions';
 
 export default class AgeScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      age: null,
+      age: undefined,
     };
     this.onChange = this.onChange.bind(this);
     this.onContinue = this.onContinue.bind(this);
   }
 
-  onChange(e) {
-    const val = e.target.value;
-    this.setState({age: parseInt(val, 10)});
+  onChange(age) {
+    this.setState({ age });
   }
 
   onContinue() {
-    const {navigation, goal} = this.props;
-    const {age} = this.state;
-    actions.navigateToHeight(navigation, {goal, age});
+    const {
+      navigation
+    } = this.props;
+    const {
+      state: {
+        params: {
+          goal,
+        }
+      }
+    } = navigation;
+    const { age } = this.state;
+    actions.navigateToHeight(navigation, { goal, age });
+  }
+
+  isValid(age) {
+    return !!age;
   }
 
   render() {
-    const {age} = this.state;
+    const { age } = this.state;
+
     return (
       <View style={styles.container}>
-        <ProgressBar />
-        <Header title={"How old are you?"}/>
+        <ProgressBar percentage={66} />
+        <Header title={"How old are you?"} />
         <View style={styles.textInputContainer}>
-          <TextInput 
+          <TextInput
             style={styles.textInput}
             keyboardType={'numeric'}
-            onChange={this.onChange}
+            onChangeText={this.onChange}
+            underlineColorAndroid='rgba(0,0,0,0)'
             value={age}
+            textAlign={'center'}
           />
-          </View>
+        </View>
         <ControlButton
           title={'Continue'}
           onClick={this.onContinue}
+          disabled={!age}
         />
       </View>
     );
@@ -51,14 +67,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'flex-start',
   },
   textInput: {
     padding: 20,
+    alignSelf: 'stretch',
+    width: '100%',
+    fontSize: 20,
   },
   textInputContainer: {
+    marginTop: 40,
     marginHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    marginBottom: 20,
   }
 });
 

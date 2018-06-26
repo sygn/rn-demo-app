@@ -1,3 +1,3 @@
-export const navigateToHeight = (navigation, goal) => {
-    navigation.navigate('Height', {goal});
+export const navigateToHeight = (navigation, data) => {
+    navigation.navigate('Height', data);
 }
