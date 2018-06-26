@@ -30,9 +30,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginBottom: 5,
-    fontWeight: 'bold',
+    fontFamily: 'firasans-bold',
   },
   subTitle: {
     fontSize: 16,
+    fontFamily: 'firasans-regular',
   }
 });
