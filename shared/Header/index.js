@@ -20,10 +20,11 @@ Header.defaultProps = {
 export default Header;
 
 const styles = StyleSheet.create({
-  header :{
-    fontSize: 20,
+  header: {
+    fontSize: 24,
     fontWeight: 'bold',
     marginTop: 26,
     textAlign: 'center',
+    fontFamily: 'firasans-bold'
   }
 });  
