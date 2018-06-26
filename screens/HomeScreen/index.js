@@ -13,15 +13,17 @@ export default class HomeScreen extends React.Component {
   handleClick(goal) {
     const { navigation } = this.props;
     return () => {
-      actions.navigateToAge(navigation, goal);
+      actions.navigateToAge(navigation, {goal});
     };
   }
+
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.headerContainer}>
           <Image
-            style={{ width: 44, height: 22 }}
+            style={{ width: 22, height: 44, resizeMode: 'cover' }}
+            source={require('./img/icon8Logo.png')}
           />
           <Text>Welcome to 8fit</Text>
         </View>
@@ -49,13 +51,16 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },
+  headerContainer: {
+    alignItems: 'center',
+  }
 });
 
 

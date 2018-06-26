@@ -1,3 +1,3 @@
-export const navigateToAge = (navigation, goal) => {
-    navigation.navigate('Age', {goal});
+export const navigateToAge = (navigation, data) => {
+    navigation.navigate('Age', data);
 }
