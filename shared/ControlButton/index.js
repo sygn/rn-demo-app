@@ -24,8 +24,8 @@ export default ControlButton;
 const styles = StyleSheet.create({
   container: {
     borderRadius: 100,
-    borderWidth: 2,
-    paddingVertical: 20,
+    borderWidth: 1,
+    paddingVertical: 10,
     paddingHorizontal: 40,
     backgroundColor: '#292c2f',
     alignSelf: 'center',
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily: 'firasans-medium'
   }
 });  
